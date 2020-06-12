@@ -25,11 +25,9 @@ class Home extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Text(
-          "Click",
-          style: TextStyle(
-              color: Colors.black
-          ),
+        child: Icon(
+          Icons.mail,
+          color: Colors.deepOrange,
         ),
         backgroundColor: Colors.lightGreenAccent,
       ),
