@@ -2,10 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-  home: IDAPP()
+  home: IdApp()
 ));
 
-class IDAPP extends StatelessWidget {
+class IdApp extends StatefulWidget {
+  @override
+  _IdAppState createState() => _IdAppState();
+}
+
+class _IdAppState extends State<IdApp> {
+  int Level = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,6 +19,15 @@ class IDAPP extends StatelessWidget {
         title: Text("ID Card"),
         elevation: 0.0,
         backgroundColor: Colors.black,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            Level += 1;
+          });
+        },
+        backgroundColor: Colors.black,
+        child: Icon(Icons.add,color: Colors.grey,),
       ),
       backgroundColor: Colors.grey[900],
       body: Padding(
@@ -56,7 +71,7 @@ class IDAPP extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              'Its Over 9000',
+              '$Level',
               style: TextStyle(
                 color: Colors.amberAccent,
                 letterSpacing: 1.0,
@@ -82,3 +97,4 @@ class IDAPP extends StatelessWidget {
     );
   }
 }
+
