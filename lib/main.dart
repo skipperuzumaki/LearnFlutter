@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'Quote.dart';
+import 'Quote_Card.dart';
 
 void main() => runApp(MaterialApp(
   home: IdApp()
@@ -11,90 +13,25 @@ class IdApp extends StatefulWidget {
 }
 
 class _IdAppState extends State<IdApp> {
-  int Level = 0;
+  List<Quote> quotes = [
+    Quote(quote: 'I make mistakes, I am out of control and at times hard to handle. But if you cant handle me at my worst, then you sure as hell dont deserve me at my best.',
+        author: 'Marlyn Monroe'),
+    Quote(quote: 'Im selfish. ', author: 'Marlyn Monroe'),
+    Quote(quote: 'Im selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you cant handle me at my worst, then you sure as hell dont deserve me at my best.',
+        author: 'Marlyn Monroe'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ID Card"),
+        title: Text("Quote Card"),
         elevation: 0.0,
         backgroundColor: Colors.black,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            Level += 1;
-          });
-        },
-        backgroundColor: Colors.black,
-        child: Icon(Icons.add,color: Colors.grey,),
-      ),
       backgroundColor: Colors.grey[900],
-      body: Padding(
-        padding: EdgeInsets.all(30.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage("Assets/images.jpg"),
-                radius: 60.0,
-              ),
-            ),
-            Divider(
-              height: 60.0,
-                color: Colors.grey[600],
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 1.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              'Son Goku',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                letterSpacing: 1.0,
-                fontSize: 30.0,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Text(
-              'LEVEL',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 1.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              '$Level',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                letterSpacing: 1.0,
-                fontSize: 30.0,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Row(
-              children: <Widget>[
-                Icon(Icons.email,color: Colors.grey,),
-                SizedBox(width: 10.0,),
-                Text(
-                  'S.Gku@dbz.co.jp',
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
       ),
     );
   }
 }
-
